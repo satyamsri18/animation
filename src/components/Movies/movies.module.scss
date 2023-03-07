@@ -1,0 +1,13 @@
+.movie-container{
+    .movie-heading{
+        text-align: center;
+    }
+    .popular-movies{
+        display: flex;
+        flex-wrap: wrap; 
+        .movie-card{
+            width: calc(100% / 3);
+            min-width: 250px;
+        }
+    }
+}

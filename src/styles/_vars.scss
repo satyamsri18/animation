@@ -1,0 +1,46 @@
+$global-color: var(--global-color, #386c44);
+$color-primary: var(--global-font-color, rgb(255, 255, 255));
+$color-dark: var(--global-font-color, rgb(0, 0, 0));
+$global-color-light: var(--global-color, #EBF1ED);
+$global-color-dark: var(--global-color, #D0DDD4);
+
+$font-family: proxima-nova;
+
+// spacing
+$spacing: 16px;
+$spacing-half: 8px;
+$spacing-double: 32px;
+$spacing-negative: -16px;
+$spacing-negative-half: -8px;
+$spacing-negative-double: -32px;
+
+// container
+$container-sm: 555px + $spacing-double;
+$container-md: 696px + $spacing-double;
+$container-lg: 840px + $spacing-double;
+$container-xl: 1106px + $spacing-double;
+$container-fs: 100%;
+
+$desktop: 1024px;
+$mobile: 1024px;
+$bp-mobile: 768px;
+$bp-narrow-small: 360px;
+$bp-slim: 300px;
+$bp-smallScreen: 1280px;
+$medium-screen: 480px;
+
+@mixin mq-mobile-narrow {
+    @media (max-width: ($bp-mobile)) {
+        @content;
+    }
+}
+@mixin mq-tab-narrow {
+    @media (max-width: ($mobile)) {
+        @content;
+    }
+}
+@mixin mq-desktop {
+    @media (min-width: $bp-mobile + 1) {
+        @content;
+    }
+}
