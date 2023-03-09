@@ -46,10 +46,11 @@ return (
                           <h2
                            className={styles.movieTitle}
                            >{movie.title}</h2>
-                          <img
+                          <motion.img
                             className={styles.movieImage}
                             src={"https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
                             alt=""
+                            whileHover={{ scale: 1.05 }}
                           />
                         </motion.div>
         ))}
