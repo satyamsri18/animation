@@ -16,7 +16,7 @@
   }
   
   .logo {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
   }
   
@@ -40,6 +40,9 @@
   }
   
   .burger {
+    @media (min-width:769px) {
+      display: none;
+    }
     cursor: pointer;
     display: block;
   }
@@ -78,6 +81,7 @@
       display: flex;
       flex-direction: column;
       text-align: center;
+      display: none;
     }
   
     .nav-links li {
@@ -92,4 +96,8 @@
       display: none;
     }
   }
-  
+  .container{
+    display: flex;
+    padding-inline: 2rem;
+    min-height: 5rem;
+  }

@@ -4,8 +4,8 @@ import * as styles from '../Header/header.module.scss'
 export const Header = () => {
   return (
     <div>
-        <header>
-  <div className={styles.logo}>Your Logo Here</div>
+        <header className={styles.container}>
+  <div className={styles.logo}>Animation</div>
   <nav>
     <ul className={styles.navLinks}>
       <li><a href="#">Home</a></li>
