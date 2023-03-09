@@ -1,7 +1,8 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+// import "./filter.css";
+import * as styles from './filter.module.scss'
 
-const Filter = (popular: any, setActiveGenre: any, activeGenre: any, setFiltered: any) => {
+function Filter({ setActiveGenre, activeGenre, setFiltered, popular }) {
   useEffect(() => {
     if (activeGenre === 0) {
       setFiltered(popular);
@@ -15,11 +16,13 @@ const Filter = (popular: any, setActiveGenre: any, activeGenre: any, setFiltered
 
   return (
     <div>
-      <button className={activeGenre === 0 ? `${'styles.active'}` : ''} onClick={() => setActiveGenre(0)}>All</button>
-      <button className={activeGenre === 35 ? `${'styles.active'}` : ''} onClick={() => setActiveGenre(35)}>Comedy</button>
-      <button className={activeGenre === 28 ? `${'styles.active'}` : ''} onClick={() => setActiveGenre(28)}>Action</button>
+      <div className={styles.filterContainer}>
+        <button className={activeGenre === 0 ? "active" : ""} onClick={() => setActiveGenre(0)}>All</button>
+        <button className={activeGenre === (35) ? "active" : ""}  onClick={() => setActiveGenre(35)}>Action</button>
+        <button className={activeGenre === (28) ? "active" : ""}  onClick={() => setActiveGenre(28)}>Comedy</button>
+      </div>
     </div>
   );
-};
+}
 
 export default Filter;

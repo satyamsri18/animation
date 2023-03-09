@@ -5,55 +5,57 @@ import Filter from "./Filter/Filter";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Movies = () => {
-  const [popular, setPopular] = useState([]);
-  const [filtered, setFiltered] = useState([]);
-  const [activeGenre, setActiveGenre] = useState([]);
+const [popular, setPopular] = useState([]);
+const [filtered, setFiltered] = useState([])
+const [activeGenre, setActiveGenre] = useState([0]);
 
-  useEffect(() => {
-    fetchPopular();
-  }, []);
-  const fetchPopular = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=bf7840e0eed77a295165e16092157aa8&language=en-US&page=1"
-    );
-    const movies = await data.json();
-    console.log(movies);
+useEffect(() => {
+  fetchPopular();
+}, []);
 
-    setPopular(movies.results);
-    setFiltered(movies.results);
-  };
-  return (
-    <div className={styles.movieContainer}>
-      <h2 className={styles.movieHeading}>Movies</h2>
-      <Filter
-        popular={popular}
-        setFiltered={setFiltered}
-        activeGenre={activeGenre}
-        setActiveGenre={setActiveGenre}
-      />
-      <motion.div Layout className={styles.popularMovies}>
-        <AnimatePresence>
-          {filtered.map((movie) => {
-            return (
-              <motion.div
-                animate={{ opacity: 1, scale: 1 }}
-                initial={{ opacity: 0, scale: 0 }}
-                exit={{ opacity: 0, scale: 0 }}
-                Layout
-                className={styles.movieCard}
-              >
-                <h2 className={styles.movieTitle}>{movie.title}</h2>
-                <img
-                  className={styles.movieImage}
-                  src={"https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
-                  alt=""
-                />
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
-      </motion.div>
-    </div>
+const fetchPopular = async () => {
+  const data = await fetch(
+
+    "https://api.themoviedb.org/3/movie/popular?api_key=ffafebf8df6d75a03f29d4d9c3eb96e5&language=en-US&page=1"
   );
+  const movies = await data.json();
+  console.log(movies);
+  setPopular(movies.results);
+  setFiltered(movies.results);
+    console.log("popular",popular);
 };
+
+return (
+  <div className={styles.movieContainer}>
+    <Filter 
+      popular={popular} 
+      setFiltered={setFiltered}
+      activeGenre={activeGenre}
+      setActiveGenre={setActiveGenre}
+    />
+    <motion.div layout className={styles.popularMovies}>
+      <AnimatePresence>
+        {filtered.map((movie) => (
+          <motion.div
+                          animate={{ opacity: 1, scale: 1 }}
+                          initial={{ opacity: 0, scale: 0 }}
+                          exit={{ opacity: 0, scale: 0 }}
+                          layout
+                          className={styles.movieCard}
+                        >
+                          <h2
+                           className={styles.movieTitle}
+                           >{movie.title}</h2>
+                          <img
+                            className={styles.movieImage}
+                            src={"https://image.tmdb.org/t/p/w500" + movie.backdrop_path}
+                            alt=""
+                          />
+                        </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.div>
+  </div>
+);
+}
 export default Movies;

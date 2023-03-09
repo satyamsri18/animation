@@ -5,8 +5,20 @@ export const Header = () => {
   return (
     <div>
         <header>
-        Header
-    </header>
+  <div className={styles.logo}>Your Logo Here</div>
+  <nav>
+    <ul className={styles.navLinks}>
+      <li><a href="#">Home</a></li>
+      <li><a href="/animations">Animations</a></li>
+      <li><a href="/movies">Movies</a></li>
+    </ul>
+  </nav>
+  <div className={styles.burger}>
+    <div className={styles.line1}></div>
+    <div className={styles.line2}></div>
+    <div className={styles.line3}></div>
+  </div>
+</header>
     </div>
   )
 }
